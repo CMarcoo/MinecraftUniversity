@@ -1,6 +1,6 @@
-package me.thevipershow.constantslookup.commands;
+package me.thevipershow.minecraftuniversity.commands;
 
-import me.thevipershow.constantslookup.MinecraftUniversity;
+import me.thevipershow.minecraftuniversity.MinecraftUniversity;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

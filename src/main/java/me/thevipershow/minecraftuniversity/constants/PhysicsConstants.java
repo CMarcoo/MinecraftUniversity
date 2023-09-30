@@ -1,4 +1,4 @@
-package me.thevipershow.constantslookup.constants;
+package me.thevipershow.minecraftuniversity.constants;
 
 import lombok.Getter;
 
