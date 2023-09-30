@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.thevipershow</groupId>
-    <artifactId>ConstantsLookup</artifactId>
-    <version>1.0.0</version>
+    <artifactId>MinecraftUniversity</artifactId>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
-    <name>ConstantsLookup</name>
+    <name>MinecraftUniversity</name>
 
     <description>Look up every constant of the world, from Math to Minecraft!</description>
     <properties>

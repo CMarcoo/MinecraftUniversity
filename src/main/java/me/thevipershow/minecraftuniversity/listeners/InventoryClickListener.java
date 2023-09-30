@@ -52,7 +52,9 @@ public class InventoryClickListener implements Listener {
         ItemStack currentItem = event.getCurrentItem();
         Player humanoid = (Player) event.getWhoClicked();
         boolean cancel = false;
-        if (currentItem.equals(constantsCommand.getBackItem())) {
+        if (currentItem == null) {
+            return;
+        } else if (currentItem.equals(constantsCommand.getBackItem())) {
             nav(humanoid, event.getClickedInventory(), true);
             cancel = true;
             interactSound(humanoid);
