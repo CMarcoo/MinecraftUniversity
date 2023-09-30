@@ -1,0 +1,6 @@
+name: ConstantsLookup
+version: '${project.version}'
+main: me.thevipershow.constantslookup.ConstantsLookup
+api-version: '1.20'
+authors: [CMarco_, TheViperShow]
+description: Look up every constant of the world, from Math to Minecraft!
