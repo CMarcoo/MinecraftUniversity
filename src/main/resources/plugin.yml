@@ -3,7 +3,7 @@ version: '${project.version}'
 main: me.thevipershow.minecraftuniversity.MinecraftUniversity
 api-version: '1.13'
 authors: [CMarco_, TheViperShow]
-description: Look up every constant of the world, from Math to Minecraft!
+description: 'A wonderful plugin to educate yourself on Minecraft!'
 commands:
   constants:
     description: 'Main command to browse constants'
