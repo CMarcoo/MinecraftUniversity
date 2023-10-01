@@ -2,6 +2,9 @@ package me.thevipershow.minecraftuniversity.constants;
 
 import lombok.Getter;
 
+/**
+ * Constants that belong to the world of Mathematics.
+ */
 @Getter
 public enum MathematicsConstants {
     ZERO(                                   "0",                "Zero",                                     0),

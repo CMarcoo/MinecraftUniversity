@@ -2,6 +2,9 @@ package me.thevipershow.minecraftuniversity.constants;
 
 import lombok.Getter;
 
+/**
+ * Constants that belong to the world of Physics.
+ */
 @Getter
 public enum PhysicsConstants {
     LIGHT_SPEED(                                "c",        "Speed of light in vacuum",                         299792458,              "1E8",      "m⋅s^−1"),
