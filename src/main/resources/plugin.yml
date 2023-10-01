@@ -7,3 +7,5 @@ description: 'A wonderful plugin to educate yourself on Minecraft!'
 commands:
   constants:
     description: 'Main command to browse constants'
+  study:
+    description: 'Enable study mode'

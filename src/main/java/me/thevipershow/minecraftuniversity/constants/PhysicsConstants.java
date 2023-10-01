@@ -64,6 +64,14 @@ public enum PhysicsConstants {
     private final String symbol, name, measureUnit, scientificNotation;
     private final double value;
 
+    /**
+     * Main constructor for PhysicsConstants class
+     * @param symbol Scientific symbol of the constant. Possibly with original symbol, when possible.
+     * @param name The name of the constant.
+     * @param value The value in decimal notation for the constant.
+     * @param scientificNotation The scientific notation value for the constant.
+     * @param measureUnit Unit of measure as a String. Exponents should be expressed with ^, fractions may use ^-1 for single values only.
+     */
     PhysicsConstants(String symbol, String name, double value, String scientificNotation, String measureUnit) {
         this.symbol = symbol;
         this.name = name;

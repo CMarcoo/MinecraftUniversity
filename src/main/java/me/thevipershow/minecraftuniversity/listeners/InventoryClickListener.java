@@ -8,18 +8,33 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
+/**
+ * This class is responsible for all the logic that allows the player to navigate user interfaces in this plugin.
+ */
 public class InventoryClickListener implements Listener {
 
     private final ConstantsCommand constantsCommand;
 
-    public InventoryClickListener(ConstantsCommand constantsCommand) {
+    /**
+     * Main constructor for the InventoryClickListener class.
+     * @param constantsCommand The ConstantsCommand class.
+     */
+    public InventoryClickListener(@NotNull ConstantsCommand constantsCommand) {
         this.constantsCommand = constantsCommand;
     }
 
-    private static void aaa(Map<Integer, Inventory> map, Player p, Inventory clicked, boolean back) {
+    /**
+     * This function is responsible for the logic that lets a user go forward or backward in the pages of a gui.
+     * @param map The inventory map, with page number as key and corresponding inventory as value.
+     * @param p The player using gui.
+     * @param clicked The inventory the player is currently clicking from.
+     * @param back true if the player is going back, false if going forward.
+     */
+    private static void pageSwitchLogic(@NotNull Map<Integer, Inventory> map, @NotNull Player p, @NotNull Inventory clicked, boolean back) {
         for (final Map.Entry<Integer, Inventory> entry : map.entrySet()) {
             if (entry.getValue() == clicked) {
                 int currentPage = entry.getKey();
@@ -30,37 +45,59 @@ public class InventoryClickListener implements Listener {
         }
     }
 
-    private void nav(Player player, Inventory clickedInv, boolean back) {
-        aaa(constantsCommand.getMathInventoryMap(), player, clickedInv, back);
-        aaa(constantsCommand.getPhysInventoryMap(), player, clickedInv, back);
+    /**
+     * General function that performs pageSwitchLogic for all types of inventories maps.
+     * @param player The player who clicked.
+     * @param clickedInv The clicked Inventory.
+     * @param back true if the player is going back, false if going forward.
+     */
+    private void pageNavigate(@NotNull Player player, @NotNull Inventory clickedInv, boolean back) {
+        pageSwitchLogic(constantsCommand.getMathInventoryMap(), player, clickedInv, back);
+        pageSwitchLogic(constantsCommand.getPhysInventoryMap(), player, clickedInv, back);
     }
 
-    private static void interactSound(Player humanoid) {
+    /**
+     * Send a default interaction sounds for guis.
+     * @param humanoid The player.
+     */
+    private static void interactSound(@NotNull Player humanoid) {
         humanoid.playSound(humanoid.getLocation(), Sound.BLOCK_NOTE_BLOCK_SNARE, 3f, 3f);
     }
 
-    private static void denySound(Player humanoid) {
+    /**
+     * Send a error sounds for guis.
+     * @param humanoid The player.
+     */
+    private static void denySound(@NotNull Player humanoid) {
         humanoid.playSound(humanoid.getLocation(), Sound.BLOCK_ANVIL_BREAK, 3f, 3f);
     }
 
-    private static void studySound(Player humanoid) {
+    /**
+     * Send a study interaction sounds for guis.
+     * @param humanoid The player.
+     */
+    private static void studySound(@NotNull Player humanoid) {
         humanoid.playSound(humanoid.getEyeLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 2f, 2f);
     }
 
+    /**
+     * Called when player clicks an item inside an Inventory.
+     * @param event InventoryClickEvent.
+     */
     @EventHandler
-    public void onEvent(InventoryClickEvent event) {
+    public void onEvent(@NotNull InventoryClickEvent event) {
         ItemStack currentItem = event.getCurrentItem();
         Player humanoid = (Player) event.getWhoClicked();
         boolean cancel = false;
         if (currentItem == null) {
             return;
         } else if (currentItem.equals(constantsCommand.getBackItem())) {
-            nav(humanoid, event.getClickedInventory(), true);
+            pageNavigate(humanoid, event.getClickedInventory(), true);
             cancel = true;
             interactSound(humanoid);
         } else if (currentItem.equals(constantsCommand.getNextItem())) {
             humanoid.closeInventory();
-            nav(humanoid, event.getClickedInventory(), false);
+            pageNavigate(humanoid, event.getClickedInventory(), false);
             interactSound(humanoid);
             cancel = true;
         } else if (currentItem.equals(constantsCommand.getMainMenuItem())) {

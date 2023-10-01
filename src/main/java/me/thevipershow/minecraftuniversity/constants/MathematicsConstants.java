@@ -48,6 +48,12 @@ public enum MathematicsConstants {
     private final String symbol, name;
     private final double value;
 
+    /**
+     * Main constructor for the MathematicsConstants class.
+     * @param symbol Scientific symbol of the constant. Possibly with original symbol, when possible.
+     * @param name The name of the constant.
+     * @param value The value in decimal notation for the constant.
+     */
     MathematicsConstants(String symbol, String name, double value) {
         this.symbol = symbol;
         this.name = name;
