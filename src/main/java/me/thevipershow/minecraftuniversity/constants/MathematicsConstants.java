@@ -1,12 +1,15 @@
 package me.thevipershow.minecraftuniversity.constants;
 
 import lombok.Getter;
+import me.thevipershow.minecraftuniversity.gui.GUIUtilities;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Constants that belong to the world of Mathematics.
  */
 @Getter
-public enum MathematicsConstants {
+public enum MathematicsConstants implements ItemConversible {
     ZERO(                                   "0",                "Zero",                                     0),
     ONE(                                    "1",                "One",                                      1),
     PI(                                     "π",                "Pi",                                               Math.PI),
@@ -61,5 +64,17 @@ public enum MathematicsConstants {
         this.symbol = symbol;
         this.name = name;
         this.value = value;
+    }
+
+    /**
+     * Generate an Item from this class.
+     *
+     * @return The new Item.
+     */
+    @Override
+    public ItemStack convertToItem() {
+        return GUIUtilities.createCustomItem(Material.END_CRYSTAL, 1, "§6" + getName(),
+                "§7Symbol§r: §e" + getSymbol(),
+                "§7Value§r: §e" + getValue());
     }
 }

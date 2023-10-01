@@ -1,12 +1,15 @@
 package me.thevipershow.minecraftuniversity.constants;
 
 import lombok.Getter;
+import me.thevipershow.minecraftuniversity.gui.GUIUtilities;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Constants that belong to the world of Physics.
  */
 @Getter
-public enum PhysicsConstants {
+public enum PhysicsConstants implements ItemConversible {
     LIGHT_SPEED(                                "c",        "Speed of light in vacuum",                         299792458,              "1E8",      "m⋅s^−1"),
     PLANCK_CONSTANT(                            "h",        "Planck constant",                                  6.62607015,             "1E-34",    "J⋅Hz^−1"),
     REDUCED_PLANCK_CONSTANT(                    "ℏ",        "Reduced Planck constant",                          1.054571817,            "1E-34",    "J⋅s"),
@@ -81,5 +84,18 @@ public enum PhysicsConstants {
         this.measureUnit = measureUnit;
         this.scientificNotation = scientificNotation;
         this.value = value;
+    }
+
+    /**
+     * Generate an Item from this class.
+     *
+     * @return The new Item.
+     */
+    @Override
+    public ItemStack convertToItem() {
+        return GUIUtilities.createCustomItem(Material.END_CRYSTAL, 1, "§6" + getName(),
+                "§7Symbol§r: §e" + getSymbol(),
+                "§7Value§r: §e" + getValue() + " " + getScientificNotation(),
+                "§7Unit§r: §e" + getMeasureUnit());
     }
 }
