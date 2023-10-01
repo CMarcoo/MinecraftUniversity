@@ -23,7 +23,7 @@ public abstract class AbstractStudyBlockHandler {
 
     protected final Material blockMaterial;
     protected final Inventory studyBlockGUI;
-    protected final Map<ItemStack, Consumer<Player>> clickActionMap = new HashMap<>();
+    protected final Map<ItemStack, Consumer<ItemStack>> clickActionMap = new HashMap<>();
 
     /**
      * Main constructor of this abstract class.

@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.thevipershow.minecraftuniversity.gui.GUIUtilities;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Constants that belong to the world of Mathematics.
@@ -72,7 +73,7 @@ public enum MathematicsConstants implements ItemConversible {
      * @return The new Item.
      */
     @Override
-    public ItemStack convertToItem() {
+    public @NotNull ItemStack convertToItem() {
         return GUIUtilities.createCustomItem(Material.END_CRYSTAL, 1, "§6" + getName(),
                 "§7Symbol§r: §e" + getSymbol(),
                 "§7Value§r: §e" + getValue());
